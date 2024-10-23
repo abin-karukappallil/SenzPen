@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { Search, ShoppingBag } from 'lucide-react';
 import { motion } from 'framer-motion';
-
+import { redirect } from 'next/navigation';
 const products = [
   {
     name: "Powered by LLM",
@@ -24,7 +24,7 @@ const products = [
   {
     name: "Using Voice Assistant",
     title: "Includes voice-activated commands and haptic feedback, ensuring that visually impaired students can navigate the device easily and interact with educational content effectively.",
-    description: "Available starting 10.23",
+    description: "",
     image: "/6.png?height=600&width=800",
     background: "bg-white",
     textColor: "text-black",
@@ -41,7 +41,7 @@ const products = [
     name: "Unique Design",
     title: "Simple sleek and unique design",
     description: "Opt for a clean, minimalist design that avoids clutter. A simple, elegant exterior with smooth lines and rounded edges gives a modern look while ensuring it is easy to handle.",
-    image: "/1.png?height=600&width=800",
+    image: "/1.png?height=400&width=400",
     background: "bg-white",
     textColor: "text-black",
   },
@@ -49,7 +49,7 @@ const products = [
     name: "Cost efficiency",
     title: "Everyone needs to be happy..So we designed it with a very cost efficient method.",
     description: "Affordable Hardware Components: Use cost-effective materials for the device's casing and components without compromising durability. Opt for widely available processors that balance performance and price.",
-    image: "/cost.jfif?height=600&width=800",
+    image: "/cost.jfif?height=400&width=400",
     background: "bg-black",
     textColor: "text-white",
   },
@@ -57,7 +57,7 @@ const products = [
     name: "Low Latency",
     title: "Low latency in a sleek and unique",
     description: "Efficient Processor: Integrate a low-power, high-efficiency processor (such as ARM-based CPUs) optimized for fast performance with minimal lag. This ensures that interactions with the device, such as voice commands and Braille output, respond instantly without delays.",
-    image: "/5.png?height=600&width=800",
+    image: "/5.png?height=400&width=400",
     background: "bg-white",
     textColor: "text-black",
   },
@@ -86,16 +86,15 @@ const stagger = {
 };
 
 const productCardVariants = {
-  initial: { opacity: 0, scale: 0.9 },
-  animate: { opacity: 1, scale: 1 },
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
   transition: { duration: 0.5 }
 };
 
-const imageVariants = {
-  hover: { scale: 1.05, transition: { duration: 0.3 } }
-};
-
 export default function Home() {
+  const callLink = ()=>{
+      window.location.href = 'https://www.orcam.com/en-us/orcam-read';
+  }
   return (
     <>
       <div className="min-h-screen bg-black text-white">
@@ -152,7 +151,7 @@ export default function Home() {
               width={500}
               height={500}
               objectFit="contain"
-              className="z-10 pl-12 ml-28"
+              className="z-10 pl-12 mx-auto"
             />
             <div className="absolute inset-0 flex items-center justify-center z-0">
               <span className="text-8xl md:text-9xl font-bold text-[#8e8e8e] opacity-50">SenzPen</span>
@@ -162,13 +161,13 @@ export default function Home() {
             className="flex space-x-4 mb-8"
             variants={fadeInUp}
           >
-            <motion.button 
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <button 
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full"
+            onClick={callLink}
             >
               Learn more
-            </motion.button>
+            </button>
+           
           </motion.div>
           <motion.p 
             className="text-gray-500"
@@ -189,54 +188,59 @@ export default function Home() {
           {products.map((product, index) => (
             <motion.div 
               key={index} 
-              className={`${product.background} ${product.textColor} p-6 rounded-2xl flex flex-col justify-between min-h-[400px] cursor-pointer`}
+              className={`${product.background} ${product.textColor} p-6 rounded-2xl flex flex-col justify-between min-h-[80vh]`}
               variants={productCardVariants}
-              whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+              whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
-                <h2 className="text-3xl font-bold mb-2">{product.name}</h2>
-                <p className="text-xl mb-2">{product.title}</p>
-                <p className="text-sm mb-4">{product.description}</p>
-              </motion.div>
+              <div>
+                <motion.h2 
+                  className="text-3xl font-bold mb-2"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                >
+                  {product.name}
+                </motion.h2>
+                <motion.p 
+                  className="text-xl mb-2"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  {product.title}
+                </motion.p>
+                <motion.p 
+                  className="text-sm mb-4"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  {product.description}
+                </motion.p>
+              </div>
               <motion.div 
-                className="relative h-[50vh] w-full mb-4 overflow-hidden rounded-xl"
-                variants={imageVariants}
-                whileHover="hover"
+                className="relative h-[50vh] w-full mb-4"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
               >
                 <Image
                   src={product.image}
                   alt={product.name}
                   layout="fill"
-                  objectFit="cover"
-                  className="rounded-xl"
+                  className="rounded-xl w-12 h-12"
                 />
               </motion.div>
-              <motion.div 
-                className="flex space-x-4 mt-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-              >
+              <div className="flex space-x-4 mt-4">
                 <motion.button 
                   className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={callLink}
                 >
                   Learn more
                 </motion.button>
-                <motion.button 
-                  className="border border-current hover:bg-white/10 px-6 py-2 rounded-full"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {product.name === "iPad mini" ? "Pre-order" : "Buy"}
-                </motion.button>
-              </motion.div>
+              </div>
             </motion.div>
           ))}
         </div>
