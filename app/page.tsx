@@ -64,7 +64,7 @@ const products = [
   {
     name: "Grip Strap",
     title: "Enhance the sleek and unique design",
-    description: "Sleek Integration:The grip strap is seamlessly embedded into the device’s body, ensuring it doesn’t detract from the sleek design. When not in use, the strap can lay flush with the surface, maintaining the slim profile of the device.",
+    description: "Sleek Integration:The grip strap is seamlessly embedded into the device's body, ensuring it doesn't detract from the sleek design. When not in use, the strap can lay flush with the surface, maintaining the slim profile of the device.",
     image: "/3.png?height=600&width=800",
     background: "bg-black",
     textColor: "text-white",
@@ -83,6 +83,16 @@ const stagger = {
       staggerChildren: 0.1
     }
   }
+};
+
+const productCardVariants = {
+  initial: { opacity: 0, scale: 0.9 },
+  animate: { opacity: 1, scale: 1 },
+  transition: { duration: 0.5 }
+};
+
+const imageVariants = {
+  hover: { scale: 1.05, transition: { duration: 0.3 } }
 };
 
 export default function Home() {
@@ -152,10 +162,13 @@ export default function Home() {
             className="flex space-x-4 mb-8"
             variants={fadeInUp}
           >
-            <button variant="default" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full">
+            <motion.button 
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               Learn more
-            </button>
-           
+            </motion.button>
           </motion.div>
           <motion.p 
             className="text-gray-500"
@@ -176,30 +189,54 @@ export default function Home() {
           {products.map((product, index) => (
             <motion.div 
               key={index} 
-              className={`${product.background} ${product.textColor} p-6 rounded-2xl flex flex-col justify-between min-h-[400px]`}
-              variants={fadeInUp}
+              className={`${product.background} ${product.textColor} p-6 rounded-2xl flex flex-col justify-between min-h-[400px] cursor-pointer`}
+              variants={productCardVariants}
+              whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
                 <h2 className="text-3xl font-bold mb-2">{product.name}</h2>
                 <p className="text-xl mb-2">{product.title}</p>
                 <p className="text-sm mb-4">{product.description}</p>
-              </div>
-              <div className="relative h-[50vh] w-full mb-4">
+              </motion.div>
+              <motion.div 
+                className="relative h-[50vh] w-full mb-4 overflow-hidden rounded-xl"
+                variants={imageVariants}
+                whileHover="hover"
+              >
                 <Image
                   src={product.image}
                   alt={product.name}
                   layout="fill"
-                  className="rounded-xl w-12 h-12"
+                  objectFit="cover"
+                  className="rounded-xl"
                 />
-              </div>
-              <div className="flex space-x-4 mt-4">
-                <button variant="default" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full">
+              </motion.div>
+              <motion.div 
+                className="flex space-x-4 mt-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
+                <motion.button 
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   Learn more
-                </button>
-                <button variant="outline" className="border-current hover:bg-white/10 px-6 py-2 rounded-full">
+                </motion.button>
+                <motion.button 
+                  className="border border-current hover:bg-white/10 px-6 py-2 rounded-full"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   {product.name === "iPad mini" ? "Pre-order" : "Buy"}
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
             </motion.div>
           ))}
         </div>
