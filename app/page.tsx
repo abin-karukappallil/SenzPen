@@ -8,15 +8,15 @@ const products = [
     name: "Powered by LLM",
     title: "Faster and Accurate",
     description: "Text-to-Speech (TTS) & Audio Books: The tablet converts written text into speech. This is useful for content that isn't available in Braille, allowing users to listen to textbooks, web content, and emails. Users can also download and listen to audiobooks.",
-    image: "/llm.jfif?height=600&width=800",
-    background: "bg-gradient-to-br from-blue-300 to-purple-300",
+    image: "/llm.jpg?height=600&width=800",
+    background: "bg-white",
     textColor: "text-black",
   },
   {
     name: "Using VLM",
     title: "Clear and Real",
     description: "Image Recognition, Integrates with a camera to capture images of diagrams or text, using a Vision-Language Model (VLM) to describe visual content and provide contextual explanations through the LLM",
-    image: "/vlm.avif?height=600&width=800",
+    image: "/vlm.jpg?height=600&width=800",
     background: "bg-black",
     textColor: "text-white",
   },
@@ -25,16 +25,16 @@ const products = [
     title: "Includes voice-activated commands and haptic feedback, ensuring that visually impaired students can navigate the device easily and interact with educational content effectively.",
     description: "",
     image: "/6.png?height=600&width=800",
-    background: "bg-white",
-    textColor: "text-black",
+    background: "bg-black",
+    textColor: "text-white",
   },
   {
     name:"Productive",
     title: "High battery life provided. Low latency and highly accurate sensor and its data",
     description: "",
     image: "/2.png?height=200&width=200",
-    background: "bg-black",
-    textColor: "text-white",
+    background: "bg-white",
+    textColor: "text-black",
   },
   {
     name: "Unique Design",
@@ -48,7 +48,7 @@ const products = [
     name: "Cost efficiency",
     title: "Everyone needs to be happy..So we designed it with a very cost efficient method.",
     description: "Affordable Hardware Components: Use cost-effective materials for the device's casing and components without compromising durability. Opt for widely available processors that balance performance and price.",
-    image: "/cost.jfif?height=400&width=400",
+    image: "/cost.jpg?height=400&width=400",
     background: "bg-black",
     textColor: "text-white",
   },
@@ -57,16 +57,16 @@ const products = [
     title: "Low latency in a sleek and unique",
     description: "Efficient Processor: Integrate a low-power, high-efficiency processor (such as ARM-based CPUs) optimized for fast performance with minimal lag. This ensures that interactions with the device, such as voice commands and Braille output, respond instantly without delays.",
     image: "/5.png?height=400&width=400",
-    background: "bg-white",
-    textColor: "text-black",
+    background: "bg-black",
+    textColor: "text-white",
   },
   {
     name: "Grip Strap",
     title: "Enhance the sleek and unique design",
     description: "Sleek Integration:The grip strap is seamlessly embedded into the device's body, ensuring it doesn't detract from the sleek design. When not in use, the strap can lay flush with the surface, maintaining the slim profile of the device.",
     image: "/3.png?height=600&width=800",
-    background: "bg-black",
-    textColor: "text-white",
+    background: "bg-white",
+    textColor: "text-black",
   },
 ];
 
@@ -99,7 +99,7 @@ export default function Home() {
       <div className="min-h-screen bg-black text-white">
         <header className="bg-[#1d1d1f] py-3 px-4 md:px-8">
           <nav className="flex items-center justify-between max-w-7xl mx-auto">
-            <ul className="hidden md:flex space-x-6 text-sm">
+            <ul className="hidden md:flex space-x-6 text-sm font-semibold">
               {['Home', 'Coming soon'].map((item) => (
                 <motion.li 
                   key={item} 
@@ -178,16 +178,16 @@ export default function Home() {
       </div>
 
       <motion.section 
-        className="px-4 md:px-8 py-8"
+        className="px-4 md:px-14 py-8"
         initial="initial"
         animate="animate"
         variants={stagger}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {products.map((product, index) => (
             <motion.div 
               key={index} 
-              className={`${product.background} ${product.textColor} p-6 rounded-2xl flex flex-col justify-between min-h-[80vh]`}
+              className={`${product.background} ${product.textColor} p-6  rounded-2xl flex flex-col justify-between min-h-[80vh] ${product.background === 'bg-black' ? 'shadow-white' : ''}`}
               variants={productCardVariants}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
@@ -227,6 +227,7 @@ export default function Home() {
                   src={product.image}
                   alt={product.name}
                   layout="fill"
+                  objectFit='contain'
                   className="rounded-xl w-12 h-12"
                 />
               </motion.div>
