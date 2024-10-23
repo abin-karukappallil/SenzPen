@@ -123,25 +123,25 @@ export default function Home() {
         </header>
 
         <motion.main 
-          className="flex flex-col items-center justify-center text-center px-4 py-16 md:py-32"
+          className="flex flex-col items-center justify-center text-center px-4 mt-0 py-16 md:py-8"
           initial="initial"
           animate="animate"
           variants={stagger}
         >
           <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-4"
+            className="text-5xl md:text-5xl font-bold mb-3"
             variants={fadeInUp}
           >
             SenzPen
           </motion.h1>
           <motion.h2 
-            className="text-2xl md:text-4xl mb-8"
+            className="text-2xl md:text-2xl mb-5"
             variants={fadeInUp}
           >
             New! Hey SenzPen.
           </motion.h2>
           <motion.div 
-            className="relative w-full max-w-3xl aspect-[3/2] mb-8"
+            className="relative w-full max-w-3xl aspect-[3/2] mb-5"
             variants={fadeInUp}
           >
             <Image
@@ -157,7 +157,7 @@ export default function Home() {
             </div>
           </motion.div>
           <motion.div 
-            className="flex space-x-4 mb-8"
+            className="flex flex-col gap-4 space-x-4 mb-8"
             variants={fadeInUp}
           >
             <button 
@@ -166,14 +166,14 @@ export default function Home() {
             >
               Learn more
             </button>
-           
-          </motion.div>
-          <motion.p 
+            {/* <motion.p 
             className="text-gray-500"
             variants={fadeInUp}
           >
             Senz Intelligence coming this fall
-          </motion.p>
+          </motion.p> */}
+          </motion.div>
+          
         </motion.main>
       </div>
 
@@ -181,6 +181,7 @@ export default function Home() {
         className="px-4 md:px-14 py-8"
         initial="initial"
         animate="animate"
+        id="features"
         variants={stagger}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
