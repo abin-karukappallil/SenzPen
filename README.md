@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SenzPen: Smart Braille Tablet for Inclusive Learning
 
-## Getting Started
+The **SenzPen** is a revolutionary educational tool designed to provide visually impaired students with accessible ways to engage with written content. With dynamic Braille display, voice controls, and interactive learning features, **SenzPen** enables students to independently participate in their education.
 
-First, run the development server:
+## Key Features:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 1. Dynamic Refreshable Braille Display
+- A tactile surface dynamically updates to form Braille characters.
+- Multiple lines of Braille are displayed, mimicking the experience of reading from paper.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Voice-Activated Interface
+- Navigate **SenzPen** with simple voice commands.
+- Access study materials, take notes, and perform searches hands-free.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Text-to-Speech (TTS) & Audio Books
+- Convert written text into speech.
+- Listen to textbooks, web content, and emails, or download audiobooks.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Optical Character Recognition (OCR)
+- Scan physical textbooks or notes using the built-in camera.
+- Convert printed materials into Braille or speech.
 
-## Learn More
+### 5. Interactive Learning Apps
+- Preloaded educational apps cover subjects like math, science, and coding.
+- Interactive exercises use both audio and tactile feedback for a more immersive experience.
 
-To learn more about Next.js, take a look at the following resources:
+### 6. Multi-Language Support
+- Supports multiple languages for both Braille and audio.
+- Encourages cross-border learning and collaboration.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 7. Digital Note-Taking
+- Take notes in Braille, store them, and convert them to text.
+- Sync notes to cloud storage for easy sharing with teachers or classmates.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 8. Wireless Connectivity & Collaboration Tools
+- Wi-Fi and Bluetooth enable access to online resources.
+- Collaborate with classmates and participate in virtual classrooms.
 
-## Deploy on Vercel
+### 9. Portable and Durable Design
+- Lightweight and durable design with long battery life for all-day use.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is a website built with Next.js to showcase the **SenzPen** product and its features.
+
+## Technologies Used
+
+- **Frontend Framework:** Next.js
+- **Styling:** Tailwind Css
+- **Deployment:** Vercel
+
