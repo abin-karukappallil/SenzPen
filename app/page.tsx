@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import { Search, ShoppingBag } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { redirect } from 'next/navigation';
 const products = [
   {
     name: "Powered by LLM",
