@@ -29,7 +29,7 @@ const products = [
     textColor: "text-white",
   },
   {
-    name:"Productive",
+    name: "Productive",
     title: "High battery life provided. Low latency and highly accurate sensor and its data",
     description: "",
     image: "/2.png?height=200&width=200",
@@ -91,25 +91,19 @@ const productCardVariants = {
 };
 
 export default function Home() {
-  const callLink = ()=>{
-      window.location.href = 'https://www.orcam.com/en-us/orcam-read';
+  const callLink = () => {
+    window.location.href = 'https://www.orcam.com/en-us/orcam-read';
   }
   return (
     <>
       <div className="min-h-screen bg-black text-white">
         <header className="bg-[#1d1d1f] py-3 px-4 md:px-8">
           <nav className="flex items-center justify-between max-w-7xl mx-auto">
-            <ul className="hidden md:flex space-x-6 text-sm font-semibold">
-              {['Home', 'Coming soon'].map((item) => (
-                <motion.li 
-                  key={item} 
-                  className="hover:text-gray-300 cursor-pointer"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {item}
-                </motion.li>
-              ))}
+            <ul className="hidden md:flex space-x-6 text-sm">
+              <a href="/" className="hover:text-gray-300 cursor-pointer">Home</a>
+              <a href="#features" className="hover:text-gray-300 cursor-pointer">Features</a>
+              <a href="#product" className="hover:text-gray-300 cursor-pointer">Products</a>
+              <a href="#about" className="hover:text-gray-300 cursor-pointer">About</a>
             </ul>
             <div className="flex items-center space-x-4">
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
@@ -122,25 +116,25 @@ export default function Home() {
           </nav>
         </header>
 
-        <motion.main 
+        <motion.main
           className="flex flex-col items-center justify-center text-center px-4 mt-0 py-16 md:py-8"
           initial="initial"
           animate="animate"
           variants={stagger}
         >
-          <motion.h1 
+          <motion.h1
             className="text-5xl md:text-5xl font-bold mb-3"
             variants={fadeInUp}
           >
             SenzPen
           </motion.h1>
-          <motion.h2 
+          <motion.h2
             className="text-2xl md:text-2xl mb-5"
             variants={fadeInUp}
           >
             New! Hey SenzPen.
           </motion.h2>
-          <motion.div 
+          <motion.div
             className="relative w-full max-w-3xl aspect-[3/2] mb-5"
             variants={fadeInUp}
           >
@@ -156,13 +150,13 @@ export default function Home() {
               <span className="text-8xl md:text-9xl font-bold text-[#8e8e8e] opacity-50">SenzPen</span>
             </div>
           </motion.div>
-          <motion.div 
+          <motion.div
             className="flex flex-col gap-4 space-x-4 mb-8"
             variants={fadeInUp}
           >
-            <button 
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full"
-            onClick={callLink}
+            <button
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full"
+              onClick={callLink}
             >
               Learn more
             </button>
@@ -173,11 +167,11 @@ export default function Home() {
             Senz Intelligence coming this fall
           </motion.p> */}
           </motion.div>
-          
+
         </motion.main>
       </div>
 
-      <motion.section 
+      <motion.section
         className="px-4 md:px-14 py-8"
         initial="initial"
         animate="animate"
@@ -186,15 +180,15 @@ export default function Home() {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {products.map((product, index) => (
-            <motion.div 
-              key={index} 
+            <motion.div
+              key={index}
               className={`${product.background} ${product.textColor} p-6  rounded-2xl flex flex-col justify-between min-h-[80vh] ${product.background === 'bg-black' ? 'shadow-white' : ''}`}
               variants={productCardVariants}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
               <div>
-                <motion.h2 
+                <motion.h2
                   className="text-3xl font-bold mb-2"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -202,7 +196,7 @@ export default function Home() {
                 >
                   {product.name}
                 </motion.h2>
-                <motion.p 
+                <motion.p
                   className="text-xl mb-2"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -210,7 +204,7 @@ export default function Home() {
                 >
                   {product.title}
                 </motion.p>
-                <motion.p 
+                <motion.p
                   className="text-sm mb-4"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -219,7 +213,7 @@ export default function Home() {
                   {product.description}
                 </motion.p>
               </div>
-              <motion.div 
+              <motion.div
                 className="relative h-[50vh] w-full mb-4"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
@@ -233,7 +227,7 @@ export default function Home() {
                 />
               </motion.div>
               <div className="flex space-x-4 mt-4">
-                <motion.button 
+                <motion.button
                   className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -246,6 +240,79 @@ export default function Home() {
           ))}
         </div>
       </motion.section>
+      <section id='about' className="bg-black text-gray-300 py-16">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0">
+            <div className="md:w-1/2 text-left">
+              <h2 className="text-4xl font-bold mb-4 text-white">What is SenzPen?</h2>
+              <p className="text-lg leading-relaxed mb-4">
+                SenzPen is designed to empower blind or visually impaired users by offering accessibility features that allow them to engage with written content independently. Whether it’s reading books, documents, signs, or even recognizing objects, SenzPen bridges the gap between the physical and digital world.
+              </p>
+              <p className="text-lg leading-relaxed mb-4">
+                With advanced text-to-speech technology, SenzPen can read out loud from a variety of sources, enabling users to access information seamlessly. It offers unparalleled convenience, ensuring that those with visual impairments can interact with written content effortlessly and independently.
+              </p>
+              <p className="text-lg leading-relaxed">
+                At SenzPen, we believe that accessibility should be universal. That’s why we’ve built a tool that enhances learning, everyday tasks, and exploration of the world for everyone, regardless of visual ability.
+              </p>
+            </div>
+            <div className="md:w-1/2">
+              <Image
+                src="/logo.png"
+                alt="About SenzPen"
+                width={600}
+                height={400}
+                className="rounded-lg object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-[#1d1d1f] text-gray-300 py-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-4 md:px-8">
+          <div>
+            <h3 className="text-xl font-bold mb-4">About Us</h3>
+            <p className="text-sm leading-relaxed">
+              SenzPen is ideal for reading books, documents, signs & all type of objects and offer accessibility features to help blind or visually impaired users engage with written content independently.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li><a href="/" className="hover:text-white">Home</a></li>
+              <li><a href="#about " className="hover:text-white">About</a></li>
+              <li><a href="#features" className="hover:text-white">Features</a></li>
+              <li><a href="#products" className="hover:text-white">Products</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-4">Newsletter</h3>
+            <p className="text-sm mb-4">Subscribe to stay updated on the latest SenzPen news and offers.</p>
+            <div className="flex">
+              <input
+                type="email"
+                className="w-full p-2 rounded-l-full focus:outline-none"
+                placeholder="Enter your email"
+              />
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 rounded-r-full">
+                Subscribe
+              </button>
+            </div>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-4">Follow Us</h3>
+            <div className="flex space-x-4">
+              <a href="#" className="hover:text-white">Twitter</a>
+              <a href="#" className="hover:text-white">Instagram</a>
+              <a href="#" className="hover:text-white">LinkedIn</a>
+              <a href="#" className="hover:text-white">Facebook</a>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-gray-700 mt-12 pt-6 text-center text-sm">
+          <p>&copy; 2024 SenzPen. All rights reserved.</p>
+        </div>
+      </footer>
     </>
   );
 }
