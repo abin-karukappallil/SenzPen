@@ -1,8 +1,10 @@
 'use client'
 
 import Image from 'next/image';
-import { Search, ShoppingBag } from 'lucide-react';
+import { Search, ShoppingBag, Menu, X } from 'lucide-react'; 
+import { useState } from 'react'; 
 import { motion } from 'framer-motion';
+
 const products = [
   {
     name: "Powered by LLM",
@@ -46,7 +48,7 @@ const products = [
   },
   {
     name: "Cost efficiency",
-    title: "Everyone needs to be happy..So we designed it with a very cost efficient method.",
+    title: "Everyone needs to be happy..So we designed it with a very cost-efficient method.",
     description: "Affordable Hardware Components: Use cost-effective materials for the device's casing and components without compromising durability. Opt for widely available processors that balance performance and price.",
     image: "/cost.jpg?height=400&width=400",
     background: "bg-black",
@@ -63,7 +65,7 @@ const products = [
   {
     name: "Grip Strap",
     title: "Enhance the sleek and unique design",
-    description: "Sleek Integration:The grip strap is seamlessly embedded into the device's body, ensuring it doesn't detract from the sleek design. When not in use, the strap can lay flush with the surface, maintaining the slim profile of the device.",
+    description: "Sleek Integration: The grip strap is seamlessly embedded into the device's body, ensuring it doesn't detract from the sleek design. When not in use, the strap can lay flush with the surface, maintaining the slim profile of the device.",
     image: "/3.png?height=600&width=800",
     background: "bg-white",
     textColor: "text-black",
@@ -91,20 +93,36 @@ const productCardVariants = {
 };
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen); 
+  };
+
   const callLink = () => {
     window.location.href = 'https://www.orcam.com/en-us/orcam-read';
-  }
+  };
+
   return (
     <>
       <div className="min-h-screen bg-black text-white">
         <header className="bg-[#1d1d1f] py-3 px-4 md:px-8">
           <nav className="flex items-center justify-between max-w-7xl mx-auto">
+            <div className="text-lg font-bold">SenzPen</div> 
             <ul className="hidden md:flex space-x-6 text-sm">
               <a href="/" className="hover:text-gray-300 cursor-pointer">Home</a>
               <a href="#features" className="hover:text-gray-300 cursor-pointer">Features</a>
-              <a href="#product" className="hover:text-gray-300 cursor-pointer">Products</a>
+              <a href="#products" className="hover:text-gray-300 cursor-pointer">Products</a>
               <a href="#about" className="hover:text-gray-300 cursor-pointer">About</a>
             </ul>
+
+            
+            <div className="md:hidden">
+              <button onClick={toggleMenu}>
+                {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
+
             <div className="flex items-center space-x-4">
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                 <Search className="w-5 h-5" />
@@ -114,6 +132,16 @@ export default function Home() {
               </motion.div>
             </div>
           </nav>
+
+          
+          {menuOpen && (
+            <ul className="flex flex-col mt-4 space-y-4 md:hidden">
+              <a href="/" className="hover:text-gray-300 cursor-pointer">Home</a>
+              <a href="#features" className="hover:text-gray-300 cursor-pointer">Features</a>
+              <a href="#products" className="hover:text-gray-300 cursor-pointer">Products</a>
+              <a href="#about" className="hover:text-gray-300 cursor-pointer">About</a>
+            </ul>
+          )}
         </header>
 
         <motion.main
@@ -160,16 +188,15 @@ export default function Home() {
             >
               Learn more
             </button>
+          </motion.div>
+        </motion.main>
+      </div>
             {/* <motion.p 
             className="text-gray-500"
             variants={fadeInUp}
           >
             Senz Intelligence coming this fall
           </motion.p> */}
-          </motion.div>
-
-        </motion.main>
-      </div>
 
       <motion.section
         className="px-4 md:px-14 py-8"
