@@ -1,8 +1,8 @@
 'use client'
 
 import Image from 'next/image';
-import { Search, ShoppingBag, Menu, X } from 'lucide-react'; 
-import { useState } from 'react'; 
+import { Search, ShoppingBag, Menu, X } from 'lucide-react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const products = [
@@ -96,7 +96,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen); 
+    setMenuOpen(!menuOpen);
   };
 
   const callLink = () => {
@@ -107,33 +107,34 @@ export default function Home() {
     <>
       <div className="min-h-screen bg-black text-white">
         <header className="bg-[#1d1d1f] py-3 px-4 md:px-8">
-          <nav className="flex items-center justify-between max-w-7xl mx-auto">
-            <div className="text-lg font-bold">SenzPen</div> 
-            <ul className="hidden md:flex space-x-6 text-sm">
+          <nav className="flex items-center justify-evenly max-w-7xl mx-auto">
+            <div className="text-lg font-bold">SenzPen</div>
+            <ul className="hidden md:flex mx-auto space-x-6 text-sm">
               <a href="/" className="hover:text-gray-300 cursor-pointer">Home</a>
               <a href="#features" className="hover:text-gray-300 cursor-pointer">Features</a>
               <a href="#products" className="hover:text-gray-300 cursor-pointer">Products</a>
               <a href="#about" className="hover:text-gray-300 cursor-pointer">About</a>
             </ul>
 
-            
-            <div className="md:hidden">
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+            <div className="md:hidden flex md:fixed absolute right-8 ">
               <button onClick={toggleMenu}>
                 {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
-
-            <div className="flex items-center space-x-4">
+          </motion.div>
+            <div className="flex items-center space-x-4 ">
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                <Search className="w-5 h-5" />
+                <Search className="w-5 h-5 hidden md:block" />
               </motion.div>
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                <ShoppingBag className="w-5 h-5" />
+                <ShoppingBag className="w-5 h-5 hidden md:block" />
               </motion.div>
             </div>
+
           </nav>
 
-          
+
           {menuOpen && (
             <ul className="flex flex-col mt-4 space-y-4 md:hidden">
               <a href="/" className="hover:text-gray-300 cursor-pointer">Home</a>
@@ -191,7 +192,7 @@ export default function Home() {
           </motion.div>
         </motion.main>
       </div>
-            {/* <motion.p 
+      {/* <motion.p 
             className="text-gray-500"
             variants={fadeInUp}
           >
